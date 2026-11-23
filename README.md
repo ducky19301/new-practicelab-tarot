@@ -1,15 +1,34 @@
 # Tarot Practice Lab
 
-This repository contains the current **partial feature bundle** exported from the Floot Tarot Practice Lab project.
+A standalone, mobile-first tarot study and reflection app built with React and Vite.
 
-## Current files
-- [Feature bundle ZIP](./tarot-practice-lab-source-bundle.zip): API endpoints for cards, journal, practice-reading saves, and learning progress; request/response schemas; migration; test; CSS card-zoom/journal patch; package manifest.
+## Features
+- All 78 Major and Minor Arcana cards with upright study meanings and reflection prompts
+- Daily card, one / three / five-card spreads, upright and reversed interpretation prompts
+- Card library search and suit filters
+- Five visual themes: Celestial Archive, Moonlit, Botanical Alchemy, Rose Nocturne, Ivory Study
+- Learning path, research/source library, private journal, saved readings
+- Deck-style selector and custom image URL per card
+- Local browser persistence and responsive mobile layout
 
-## Deployment warning
-This is **not a complete standalone app** and is **not ready to deploy to Cloudflare Pages**. The full application pages, shared UI components, Floot runtime/configuration, database helpers/schema, uploaded assets, and complete project export are not included in the ZIP. Deploying this repository as-is will not create the working Tarot Practice Lab app.
+## Run locally
+```sh
+npm install
+npm run dev
+```
 
-## Source project
-- Floot project ID: `1775783b-37fc-4b31-b50d-6b3fc579ce89`
-- Preview: https://floot.com/mcp-preview/1775783b-37fc-4b31-b50d-6b3fc579ce89
+## Production build
+```sh
+npm run build
+```
 
-This repository is a staging handoff for the completed feature bundle. The full app still needs to be exported/assembled and verified before Cloudflare deployment.
+## Cloudflare Pages
+Connect this repository and select branch `remake/tarot-practice-lab`.
+- Framework preset: Vite
+- Build command: `npm run build`
+- Build output directory: `dist`
+
+## Data and artwork
+Journal entries, readings, settings and custom artwork URLs are stored in browser localStorage. They do not sync between devices and can be lost if browser storage is cleared. The included card faces are original symbolic study illustrations, not licensed scans of Rider-Waite-Smith, Marseille or Thoth decks. The deck selector changes the study context, and users can add image URLs for individual cards.
+
+This is a review build, not a production deployment.
