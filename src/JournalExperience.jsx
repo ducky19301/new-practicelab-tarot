@@ -1,9 +1,10 @@
 import React,{useMemo,useState} from 'react';
 import {BookOpen,BookMarked,ChevronLeft,ChevronRight,Printer,Plus,Trash2,X} from 'lucide-react';
+import {buildJournalPages} from './journalBook';
 
 export default function JournalExperience({saved,notes,cards,title,setTitle,body,setBody,saveNote,onDeleteReading,onDeleteNote}){
  const [open,setOpen]=useState(false),[page,setPage]=useState(0),[turn,setTurn]=useState(0);
- const pages=useMemo(()=>[...saved.map(x=>({kind:'reading',id:x.id,date:x.date,title:x.cards?.length?'Reading · '+x.cards.length+' cards':'Saved reading',cards:x.cards||[],body:x.note||''})),...notes.map(x=>({kind:'reflection',id:x.id,date:x.date,title:x.title||'Reflection',cards:[],body:x.body||''}))].sort((a,b)=>new Date(b.date).getTime()-new Date(a.date).getTime()),[saved,notes]);
+ const pages=useMemo(()=>buildJournalPages(saved,notes),[saved,notes]);
  const current=pages[page];
  const print=()=>window.print();
  return <><div className="intro journal-intro"><label>YOUR PRIVATE NOTEBOOK</label><h1>Journal & saved readings</h1><p>A quiet place for your spreads, observations, and evolving interpretations.</p></div>
